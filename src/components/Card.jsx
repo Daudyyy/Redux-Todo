@@ -19,13 +19,13 @@ const Card = () => {
     return (
       <div className="w-1/2 h-3/4 min-h-max bg-amber-100 shadow-2xl rounded-lg p-2 items-center flex flex-col space-y-10 justify-between">
         <div className="flex flex-col space-y-10 w-full h-3/4 min-h-max items-center">
-          <h1 className="text-3xl font-semibold underline">My Todo List</h1>
+          <h1 className="text-3xl font-semibold ">My Todo List</h1>
           <div className="w-3/4">
             {toggle ? <AddTodoForm /> : <UpdateTodoForm />}
           </div>
-          <div className="w-3/4">
+          <div className="w-3/4 ">
             {myTodos.length !== 0 ? (
-              <ul className="w-full max-h-72 overflow-y-scroll">
+              <ul className="w-full max-h-72 overflow-y-auto ">
                 {myTodos.map((todo) => (
                   <li className="mb-3" key={todo.id}>
                     <SingleTodoCard title={todo.title} id={todo.id} />
@@ -55,7 +55,7 @@ const Card = () => {
     return (
       <div className="w-1/2 h-3/4 min-h-max bg-amber-100 shadow-2xl rounded-lg p-2 items-center flex flex-col space-y-10 justify-between">
         <div className="flex flex-col space-y-10 w-full h-3/4 min-h-max items-center">
-          <h1 className="text-3xl font-semibold underline">
+          <h1 className="text-3xl font-semibold">
             My Todo List for Today
           </h1>
           <div className="w-3/4">

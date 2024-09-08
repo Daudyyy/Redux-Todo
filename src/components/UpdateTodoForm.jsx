@@ -28,6 +28,7 @@ const UpdateTodoForm = () => {
       <form onSubmit={handleSubmit} className="flex space-x-3">
         <input
           type="text"
+          name="updateTodo"
           value={update}
           onChange={(e) => setUpdate(e.target.value)}
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-zinc-200"

@@ -1,11 +1,18 @@
 
+import React from "react";
+import backgroungImg from './assets/images/gradiant.jpeg';
 import Card from "./components/Card";
+
 function App() {
   return (
-    <div
-      className="bg-violet-500 h-screen w-screen"
-    >
-      <div className="container mx-auto flex items-center justify-center h-screen">
+    <div 
+    className="relative w-screen h-screen">
+      <img
+      src={backgroungImg}
+      alt="Image description"
+      className="absolute inset-0 object-cover w-full h-full"
+      />
+      <div className="relative flex items-center justify-center w-full h-full">
         <Card />
       </div>
     </div>
