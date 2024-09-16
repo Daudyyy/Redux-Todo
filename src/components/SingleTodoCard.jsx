@@ -10,7 +10,7 @@ const SingleTodoCard = ({ title, description, date, image, id }) => {
   const dispatch = useDispatch();
 
   return (
-    <div className="flex flex-col bg-white p-4 rounded-lg shadow-md space-y-2">
+    <div className="flex flex-col bg-white p-4 rounded-lg shadow-md space-y-2 overflow-x-auto">
       {/* Task title */}
       <h2 className={toggleComplete ? "font-semibold line-through" : "font-semibold"}>
         {title}
