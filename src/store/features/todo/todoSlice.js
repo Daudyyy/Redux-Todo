@@ -19,6 +19,9 @@ export const todoSlice = createSlice({
         (todo) => todo.id === action.payload.id
       );
       todoToUpdate.title = action.payload.title;
+      todoToUpdate.description = action.payload.description;  // Update description
+      todoToUpdate.date = action.payload.date;                // Update date
+      todoToUpdate.image = action.payload.image;              // Update image
       state.toggleForm = !state.toggleForm;
     },
     todoDeleted: (state, action) => {
