@@ -6,16 +6,20 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 const AddTodoForm = () => {
+  // Local states for form inputs
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState(null);
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState(null); // Image state to store file
+
   const dispatch = useDispatch();
 
+  // Handle image selection
   const handleImageChange = (e) => {
-    setImage(e.target.files[0]);
+    setImage(e.target.files[0]); // Store selected image file
   };
 
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     if (title.trim() === "" || description.trim() === "") {
@@ -23,18 +27,18 @@ const AddTodoForm = () => {
       return;
     }
 
-    // Dispatch new task with title, description, date, and image
+    // Dispatch new task with title, description, date, and image (converted to URL)
     dispatch(
       todoAdded({
         id: nanoid(),
         title,
         description,
         date: date ? date.toISOString() : null,
-        image: image ? URL.createObjectURL(image) : null,
+        image: image ? URL.createObjectURL(image) : null, // Save image as a URL
       })
     );
 
-    // Clear form inputs
+    // Clear form inputs after submission
     setTitle("");
     setDescription("");
     setDate(null);

@@ -10,14 +10,14 @@ const UpdateTodoForm = () => {
 
   const [title, setTitle] = useState(todoToUpdate.title);
   const [description, setDescription] = useState(todoToUpdate.description);
-  const [date, setDate] = useState(new Date(todoToUpdate.date));
-  const [image, setImage] = useState(todoToUpdate.image);
+  const [date, setDate] = useState(todoToUpdate.date ? new Date(todoToUpdate.date) : null);
+  const [image, setImage] = useState(null);
 
   const handleImageChange = (e) => {
-    setImage(URL.createObjectURL(e.target.files[0]));
+    setImage(e.target.files[0]);
   };
 
-  const handleUpdate = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (title.trim() === "" || description.trim() === "") {
       alert("Please enter both title and description.");
@@ -30,13 +30,13 @@ const UpdateTodoForm = () => {
         title,
         description,
         date: date ? date.toISOString() : null,
-        image,
+        image: image ? URL.createObjectURL(image) : todoToUpdate.image,
       })
     );
   };
 
   return (
-    <form onSubmit={handleUpdate} className="flex flex-col space-y-3 bg-white p-5 rounded-lg shadow-md">
+    <form onSubmit={handleSubmit} className="flex flex-col space-y-3 bg-white p-5 rounded-lg shadow-md">
       <input
         type="text"
         value={title}
@@ -69,7 +69,7 @@ const UpdateTodoForm = () => {
 
       <button
         type="submit"
-        className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
       >
         Update Task
       </button>
